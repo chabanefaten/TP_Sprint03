@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Liste des Parfums</title>
+</head>
+<body>
+	<div th:replace="template"></div>
+<div class="container">
+<div class="card">
+ <div class="card-header">
+ Liste des Parfums
+ </div>
+ <div class="card-body">
+ 
+ <table class="table table-striped">
+ <tr>
+ <th>ID</th><th>Nom Parfum</th><th>Prix</th><th>Date</th><th>Type</th>
+ </tr> 
+ <tr th:each="p:${parfums.content}">
+ <td th:text="${p.idParfum}"></td>
+ <td th:text="${p.nomParfum}"></td>
+ <td th:text="${p.prixParfum}"></td> 
+  <td th:text="${p.dateCreation}"></td> 
+  
+    
+  
+ <td><a class="btn btn-success" th:href="@{modifierParfum(id=${p.idParfum}, page=${currentPage},size=${size})}">Editer</a></td>
+ <td><a class="btn btn-danger" th:href="@{supprimerParfum(id=${p.idParfum},page=${currentPage},size=${size})}" onclick="return confirm('Etes-vous sûr ?')">Supprimer</a></td>
+
+  </tr>     
+ </table>
+ 
+<ul class="nav nav-pills">
+	<li th:each="page,status:${pages}">
+    <a th:class="${status.index==currentPage?'btn btn-primary':'btn' }" 
+    th:href="@{ /ListeParfums(page=${status.index}, size=${size} ) }"
+    th:text="${status.index }"></a>
+</li>
+
+</ul>
+ </div>
+</div>
+</div>
+</body>
+</html>
