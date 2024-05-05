@@ -10,11 +10,16 @@ import org.springframework.stereotype.Service;
 import com.faten.parfums.entities.Parfum;
 import com.faten.parfums.entities.Type;
 import com.faten.parfums.repos.ParfumRepository;
+import com.faten.parfums.repos.TypeRepository;
 
 @Service
 public class ParfumServiceImpl implements ParfumService {
 	@Autowired
 	ParfumRepository parfumRepository;
+	
+	@Autowired
+	TypeRepository typeRepository;
+
 
 	@Override
 	public Parfum saveParfum(Parfum p) {
@@ -81,4 +86,10 @@ public class ParfumServiceImpl implements ParfumService {
 	return parfumRepository.trierParfumsNomsPrix();
 
 }
+
+	@Override
+	public List<Type> getAllTypes() {
+		return typeRepository.findAll();
+		
+	}
 }

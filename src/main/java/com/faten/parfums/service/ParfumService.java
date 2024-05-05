@@ -25,6 +25,7 @@ public interface ParfumService {
 	List<Parfum> findByTypeIdTyp(Long id);
 	List<Parfum> findByOrderByNomParfumAsc();
 	List<Parfum> trierParfumsNomsPrix();
+	List<Type> getAllTypes();
 
 
 }
