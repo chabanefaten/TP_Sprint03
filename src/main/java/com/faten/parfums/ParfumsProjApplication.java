@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.faten.parfums.entities.Parfum;
 import com.faten.parfums.entities.Role;
+import com.faten.parfums.entities.Type;
 import com.faten.parfums.entities.User;
 import com.faten.parfums.service.ParfumService;
 import com.faten.parfums.service.UserService;
@@ -58,6 +60,7 @@ public  class ParfumsProjApplication implements CommandLineRunner{
 			 * parfumService.saveParfum(new Parfum("Black XS", 2800.0, new Date()));
 			 * parfumService.saveParfum(new Parfum("laurence ", 900.0, new Date()));
 			 */
+		  repositoryRestConfiguration.exposeIdsFor(Parfum.class,Type.class);
 			  }
 }
 	 

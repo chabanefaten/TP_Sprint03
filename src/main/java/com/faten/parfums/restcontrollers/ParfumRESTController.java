@@ -49,9 +49,13 @@ public class ParfumRESTController {
 	    }
 
 	  @GetMapping("/parstyp/{idTyp}")
-	    public List<Parfum> getParfumsByCatId(@PathVariable("idTyp") Long idTyp) {
+	    public List<Parfum> getParfumsByTypId(@PathVariable("idTyp") Long idTyp) {
 	        return parfumService.findByTypeIdTyp(idTyp);
 	    }
+	  @GetMapping("/parsByName/{nom}")
+	  public List<Parfum> findByNomParfumContains(@PathVariable("nom") String nom) {
+	  return parfumService.findByNomParfumContains(nom);
+	  }
 
 	  
 	  
